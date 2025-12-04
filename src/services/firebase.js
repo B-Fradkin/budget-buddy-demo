@@ -5,12 +5,12 @@ import { getFirestore } from 'firebase/firestore';
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyB8uv6s0t3yClW0oHJGedUpm-6aj3mWAAw",
-  authDomain: "budgetbuddy-b3927.firebaseapp.com",
-  projectId: "budgetbuddy-b3927",
-  storageBucket: "budgetbuddy-b3927.firebasestorage.app",
-  messagingSenderId: "67342257322",
-  appId: "1:67342257322:web:5ceb40f1b864da14d954d3"
+  apiKey: "Your API Key",
+  authDomain: "Your DOmain",
+  projectId: "Your Project ID",
+  storageBucket: "XXXXXXXXXXXXXX",
+  messagingSenderId: "XXXXXXXXXXXXXX",
+  appId: "XXXXXXXXXXXXXX"
 };
 
 // Initialize Firebase
