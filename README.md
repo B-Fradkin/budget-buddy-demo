@@ -1,6 +1,6 @@
 # BudgetBuddy 💰
 
-A modern, full-stack budget tracking web application built with React and Firebase.
+A modern, beautiful budget tracking app built with React and Firebase.
 
 ![BudgetBuddy](https://img.shields.io/badge/React-18.2.0-blue)
 ![Firebase](https://img.shields.io/badge/Firebase-10.7.1-orange)
@@ -10,11 +10,21 @@ A modern, full-stack budget tracking web application built with React and Fireba
 
 - 🔐 **User Authentication** - Secure signup and login
 - 💳 **Transaction Tracking** - Add, view, and delete transactions
-- 📊 **Budget Categories** - Create and manage spending categories
-- 📈 **Visual Analytics** - Pie charts and progress bars
+- 📊 **Budget Categories** - Create custom categories with icons and colors
+- 📈 **Visual Analytics** - Pie charts and spending breakdowns
+- 📧 **Email Notifications** - Get alerts for budget thresholds and large transactions (FREE)
 - 💰 **Real-time Balance** - Automatically calculated income and expenses
+- 🌙 **Dark Mode** - Toggle between light and dark themes
 - 🎨 **Modern UI** - Clean, responsive design with Tailwind CSS
-- ☁️ **Cloud Database** - Firebase Firestore for data persistence
+- ☁️ **Cloud Sync** - Data syncs across all your devices via Firebase
+
+## Email Notifications (Optional)
+
+BudgetBuddy can send you **FREE** email alerts for:
+- 🎯 Budget thresholds (50%, 75%, 90%, 100%+)
+- 💸 Large transactions over $100
+
+**Setup:** See [EMAILJS_SETUP.md](EMAILJS_SETUP.md) for detailed instructions (takes 5 minutes).
 
 ## Quick Start
 
@@ -29,17 +39,17 @@ A modern, full-stack budget tracking web application built with React and Fireba
    - Create a Firestore database
    - Copy your config to `src/services/firebase.js`
 
-3. **Start the app:**
+3. **Set up Email Notifications (Optional):**
+   - Copy `.env.example` to `.env`
+   - Follow [EMAILJS_SETUP.md](EMAILJS_SETUP.md) for EmailJS credentials
+
+4. **Start the app:**
    ```bash
    npm start
    ```
 
-4. **Open your browser:**
+5. **Open your browser:**
    - Navigate to `http://localhost:3000`
-
-## Full Setup Instructions
-
-See [SETUP_GUIDE.md](SETUP_GUIDE.md) for detailed step-by-step instructions.
 
 ## Tech Stack
 
@@ -49,16 +59,23 @@ See [SETUP_GUIDE.md](SETUP_GUIDE.md) for detailed step-by-step instructions.
 - **Icons:** Lucide React
 - **Backend:** Firebase (Authentication + Firestore)
 - **Routing:** React Router v6
+- **Emails:** EmailJS (free tier)
 
 ## Project Structure
 
 ```
 src/
-├── components/     # Reusable components
-├── context/        # React Context (Auth)
-├── pages/          # Page components
-├── services/       # Firebase services
-└── App.js          # Main app component
+├── components/         # Reusable components
+├── context/            # React Context (Auth)
+├── pages/              # Page components
+│   ├── Dashboard.js    # Main dashboard
+│   ├── Login.js        # Login page
+│   └── Register.js     # Registration page
+├── services/
+│   ├── firebase.js     # Firebase configuration
+│   ├── database.js     # Firestore operations
+│   └── emailService.js # Email notifications
+└── App.js              # Main app component
 ```
 
 ## Available Scripts

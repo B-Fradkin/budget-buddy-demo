@@ -18,6 +18,7 @@ import {
   deleteTransaction,
   updateCategorySpending
 } from '../services/database';
+import { checkBudgetThresholds, checkLargeTransaction } from '../services/emailService';
 
 export default function Dashboard() {
   const { currentUser, logout } = useAuth();
@@ -117,9 +118,26 @@ export default function Dashboard() {
         categoryId: transactionForm.categoryId || null
       };
 
-      await addTransaction(currentUser.uid, transactionData);
+      const docRef = await addTransaction(currentUser.uid, transactionData);
       await updateCategorySpending(currentUser.uid);
-      await loadData();
+
+      // Reload data
+      const [updatedCategories, updatedTransactions] = await Promise.all([
+        getCategories(currentUser.uid),
+        getTransactions(currentUser.uid)
+      ]);
+      setCategories(updatedCategories);
+      setTransactions(updatedTransactions);
+
+      // Send email notifications if enabled
+      if (notifications.enabled && notifications.email) {
+        // Check for large transaction ($100+)
+        const transactionWithId = { ...transactionData, id: docRef.id };
+        await checkLargeTransaction(currentUser.uid, currentUser.email, transactionWithId);
+
+        // Check budget thresholds
+        await checkBudgetThresholds(currentUser.uid, currentUser.email, updatedCategories, updatedTransactions);
+      }
 
       setTransactionForm({
         name: '',
