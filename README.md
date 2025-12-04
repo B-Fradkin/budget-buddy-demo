@@ -28,27 +28,45 @@ BudgetBuddy can send you **FREE** email alerts for:
 
 ## Quick Start
 
-1. **Install dependencies:**
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/B-Fradkin/budget-buddy-demo.git
+   cd budget-buddy-demo
+   ```
+
+2. **Install dependencies:**
    ```bash
    npm install
    ```
 
-2. **Configure Firebase:**
+3. **Configure Firebase:**
    - Create a Firebase project at [console.firebase.google.com](https://console.firebase.google.com)
    - Enable Authentication (Email/Password)
    - Create a Firestore database
    - Copy your config to `src/services/firebase.js`
 
-3. **Set up Email Notifications (Optional):**
-   - Copy `.env.example` to `.env`
-   - Follow [EMAILJS_SETUP.md](EMAILJS_SETUP.md) for EmailJS credentials
+4. **Set up Email Notifications (Optional but Recommended):**
 
-4. **Start the app:**
+   **Important:** Email notifications require a `.env` file which is **not included** in the repository for security reasons.
+
+   ```bash
+   # Copy the example environment file
+   cp .env.example .env
+   ```
+
+   Then follow [EMAILJS_SETUP.md](EMAILJS_SETUP.md) to:
+   - Create a free EmailJS account
+   - Get your Service ID, Template ID, and Public Key
+   - Add them to your `.env` file
+
+   Without this setup, the app will work but email notifications will be disabled.
+
+5. **Start the app:**
    ```bash
    npm start
    ```
 
-5. **Open your browser:**
+6. **Open your browser:**
    - Navigate to `http://localhost:3000`
 
 ## Tech Stack
